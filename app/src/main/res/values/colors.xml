@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black">#000000</color>
+    <color name="blue">#006aff</color>
+    <color name="green">#005b18</color>
+    <color name="orange">#ff4d00</color>
+    <color name="white">#ffffff</color>
+
+    <color name="windowBackground">#F4F4F4</color>
+    <color name="grid_rate_text">#444444</color>
+    <color name="my_statusbar_color">#00000000</color>
+
+    <color name="btn_color">@color/colorPrimary</color>
+    <!-- 按钮按压时的颜色 -->
+    <color name="colorButtonPressed">#1976d2</color>
+    <!-- 按钮禁用时的颜色 -->
+    <color name="colorButtonDisable">#DDDDDD</color>
+    <!-- 分割线的颜色 -->
+    <color name="colorLine">#ECECEC</color>
+
+    <color name="fl_btn">#E0E0E0</color>
+    <color name="ripp">#9E9E9E</color>
+</resources>

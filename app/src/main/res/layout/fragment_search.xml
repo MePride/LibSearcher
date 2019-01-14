@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.SearchFragment"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl_test_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <com.hjq.bar.TitleBar
+            android:id="@+id/tb_test_a_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:backButton="false"
+            app:barStyle="transparent"
+            app:layout_collapseMode="pin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/space_18">
+
+                <TextView
+                    android:id="@+id/tv_test_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_20"
+                    android:gravity="center_vertical"
+                    android:text="搜索图书"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_30px" />
+
+                <TextView
+                    android:id="@+id/tv_test_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/space_20"
+                    android:layout_marginRight="@dimen/space_40"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_home_search_bar_transparent"
+                    android:gravity="center"
+                    android:text="@string/input_hint"
+                    android:textColor="#a4a4a4"
+                    android:textSize="@dimen/font_size_28px" />
+
+                </LinearLayout>
+
+            </com.hjq.bar.TitleBar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="正在加载热门图书···"
+            android:gravity="center"/>
+
+        <libsearcher.mepride.android.librarysearcher.widget.BannerLayout
+            android:id="@+id/bander"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            app:autoPlaying="true"
+            app:centerScale="1.3"
+            app:itemSpace="20"
+            app:moveSpeed="1.8"
+            app:showIndicator="false"/>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

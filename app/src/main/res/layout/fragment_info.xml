@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_30px"
+                android:textColor="@color/blue"
+                android:layout_marginHorizontal="@dimen/space_30"
+                android:layout_marginVertical="@dimen/space_10"/>
+
+            <TextView
+                android:id="@+id/tv_detail_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_30px"
+                android:textColor="@color/blue"
+                android:layout_marginHorizontal="@dimen/space_30"
+                android:layout_marginVertical="@dimen/space_10"/>
+
+            <TextView
+                android:id="@+id/tv_detail_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_30px"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="@dimen/space_30"
+                android:layout_marginVertical="@dimen/space_10"/>
+
+            <TextView
+                android:id="@+id/tv_detail_isbn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_30px"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="@dimen/space_30"
+                android:layout_marginVertical="@dimen/space_10" />
+
+            <TextView
+                android:id="@+id/tv_detail_pages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_30px"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="@dimen/space_30"
+                android:layout_marginVertical="@dimen/space_10"/>
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_detail_abztract"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/bg_details"-->
+                <!--android:layout_margin="@dimen/space_20"-->
+                <!--android:padding="@dimen/space_20"/>-->
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 默认按钮的圆角大小 -->
+    <dimen name="button_round_size">5dp</dimen>
+
+    <!-- 默认分割线的宽度或者高度 -->
+    <dimen name="line_size">1px</dimen>
+    <dimen name="space_10">5dp</dimen>
+    <dimen name="space_100">50dp</dimen>
+    <dimen name="space_200">100dp</dimen>
+    <dimen name="space_400">200dp</dimen>
+    <dimen name="font_size_40px">20sp</dimen>
+    <dimen name="space_40">20dp</dimen>
+    <dimen name="space_60">30dp</dimen>
+    <dimen name="space_80">40dp</dimen>
+
+    <dimen name="space_512">256dp</dimen>
+    <dimen name="space_300">150dp</dimen>
+    <dimen name="space_240">120dp</dimen>
+    <dimen name="space_20">10dp</dimen>
+    <dimen name="space_18">9dp</dimen>
+    <dimen name="space_30">15dp</dimen>
+    <dimen name="font_size_30px">15sp</dimen>
+    <dimen name="font_size_28px">14sp</dimen>
+    <dimen name="font_size_32px">16sp</dimen>
+    <dimen name="space_600">300dp</dimen>
+    <dimen name="space_160">80dp</dimen>
+
+    <dimen name="status_bar_height">25dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+</resources>
