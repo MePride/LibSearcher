@@ -1,12 +1,13 @@
 package libsearcher.mepride.android.librarysearcher.view.activity;
 
 import android.os.Looper;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import libsearcher.mepride.android.librarysearcher.common.MyActivity;
 import libsearcher.mepride.android.librarysearcher.helper.KeyboardUtils;
 import libsearcher.mepride.android.librarysearcher.model.Book;
 import libsearcher.mepride.android.librarysearcher.model.BookService;
+import libsearcher.mepride.android.librarysearcher.model.UrlModel;
 import libsearcher.mepride.android.librarysearcher.view.adapter.SearchAdapter;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -36,19 +38,19 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class SearchActivity extends MyActivity
-        implements View.OnClickListener,View.OnKeyListener{
+        implements View.OnKeyListener,AdapterView.OnItemSelectedListener{
 
-    @BindView(R.id.btn_search1)
-    Button mSearchButton;
     @BindView(R.id.et_search)
     EditText mSearchView;
     @BindView(R.id.rec_book)
     RecyclerView mBookRecyclerview;
     @BindView(R.id.search_progressBar)
     ProgressBar progressBar;
-
-    int pageNumber=0;
-    int bookNumber=0;
+    @BindView(R.id.spinner)
+    AppCompatSpinner mSpinner;
+    private int pageNumber=0;
+    private int bookNumber=0;
+    private String type = "title";
     private List<Book> bookArrayList = new ArrayList<>();
     private SearchAdapter searchAdapter;
 
@@ -64,58 +66,67 @@ public class SearchActivity extends MyActivity
 
     @Override
     protected void initView() {
-        mSearchButton.setOnClickListener(this);
         searchAdapter = new SearchAdapter(bookArrayList);
         mBookRecyclerview.setAdapter(searchAdapter);
         mBookRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mSearchView.setOnKeyListener(this);
+        mSpinner.setOnItemSelectedListener(this);
     }
 
     @Override
-    protected void initData() {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_search1:
-                bookArrayList.clear();
-                progressBar.setVisibility(View.VISIBLE);
-                System.out.println("Clicked");
-                KeyboardUtils.hideKeyboard(v);
-                Search();
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (position){
+            case 0:
+                type = "title";
+                break;
+            case 1:
+                type = "author";
+                break;
+            case 2:
+                type = "isbn";
+                break;
+            case 3:
+                type = "keyword";
                 break;
                 default:break;
         }
     }
 
     @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+    @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
             //先隐藏键盘
-            ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE))
-                    .hideSoftInputFromWindow(getActivity().getCurrentFocus()
-                            .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-            bookArrayList.clear();
-            progressBar.setVisibility(View.VISIBLE);
-            KeyboardUtils.hideKeyboard(v);
-            Search();
+            if (mSearchView.getText().toString().isEmpty()){
+                Toast.makeText(getContext(), "请输入要搜索的内容", Toast.LENGTH_SHORT).show();
+            }else {
+                ((InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE))
+                        .hideSoftInputFromWindow(getActivity().getCurrentFocus()
+                                .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                bookArrayList.clear();
+                progressBar.setVisibility(View.VISIBLE);
+                KeyboardUtils.hideKeyboard(v);
+                Search();
+            }
         }
         return false;
     }
 
     public void Search(){
-        if (mSearchView.getText().toString().isEmpty()){
-            Toast.makeText(getContext(), "请输入要搜索的内容", Toast.LENGTH_SHORT).show();
-        }else {
-            String baseUrl = "http://211.86.140.145:8080/";
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .build();
-            BookService service = retrofit.create(BookService.class);
-            Call<ResponseBody> call = service.getBook(mSearchView.getText().toString(),5,"title",1);
-            call.enqueue(new Callback<ResponseBody>() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(UrlModel.ChaoXing)
+                .build();
+        BookService service = retrofit.create(BookService.class);
+        Call<ResponseBody> call = service.getBook(mSearchView.getText().toString(),5,"title",1);
+        call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     try{
@@ -132,7 +143,7 @@ public class SearchActivity extends MyActivity
                             return;
                         }else{
                             for (int i=1;i<=pageNumber;i++){
-                                Call<ResponseBody> responseBodyCall = service.getBook(mSearchView.getText().toString(),5,"title",i);
+                                Call<ResponseBody> responseBodyCall = service.getBook(mSearchView.getText().toString(),5,type,i);
                                 responseBodyCall.enqueue(new Callback<ResponseBody>() {
                                     @Override
                                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -192,7 +203,5 @@ public class SearchActivity extends MyActivity
                     t.printStackTrace();
                 }
             });
-        }
     }
-
 }

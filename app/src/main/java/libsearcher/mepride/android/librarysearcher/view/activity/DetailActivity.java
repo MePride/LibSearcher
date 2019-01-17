@@ -32,10 +32,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import butterknife.BindView;
+import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 import libsearcher.mepride.android.librarysearcher.R;
 import libsearcher.mepride.android.librarysearcher.common.MyActivity;
 import libsearcher.mepride.android.librarysearcher.model.Book;
 import libsearcher.mepride.android.librarysearcher.model.Situation;
+import libsearcher.mepride.android.librarysearcher.model.UrlModel;
 import libsearcher.mepride.android.librarysearcher.view.fragment.InfoFragment;
 import libsearcher.mepride.android.librarysearcher.view.fragment.IntroFragment;
 import libsearcher.mepride.android.librarysearcher.view.fragment.StateFragment;
@@ -65,7 +67,6 @@ public class DetailActivity extends MyActivity
 
     private Book book;
     private String isbnNum;
-    private static String API_URL = "https://api.douban.com/v2/book/isbn/";
     private List<String> titles = Arrays.asList("基本信息", "图书简介", "借阅情况");
     private List<Fragment> fragments = new ArrayList<>();
     private List<Situation> situationList = new ArrayList<>();
@@ -84,7 +85,8 @@ public class DetailActivity extends MyActivity
     ViewPager viewPager;
     @BindView(R.id.fl_add)
     FloatingActionButton add;
-
+    @BindView(R.id.include)
+    Toolbar toolbar;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_detail;
@@ -190,7 +192,7 @@ public class DetailActivity extends MyActivity
             public void run() {
                 try{
                     Request request = new Request.Builder()
-                            .url(API_URL+isbn)
+                            .url(UrlModel.DoubanApi+isbn)
                             .build();
                     Call call = okHttpClient.newCall(request);
                     call.enqueue(new Callback() {
@@ -268,7 +270,14 @@ public class DetailActivity extends MyActivity
 
     @Override
     protected void initView() {
+
         add.setOnClickListener(this);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void saveBook(Book book){

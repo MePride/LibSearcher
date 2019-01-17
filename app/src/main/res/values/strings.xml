@@ -7,7 +7,8 @@
     <string name="about_copyright">Copyright © 2018</string>
     <string name="title_detail">详情</string>
 
-    <string name="version">v1.0</string>
+    <string name="version">v1.1</string>
+    <string name="question">问答</string>
     <string name="bookNumber">索引号</string>
     <string name="barcode">条码号</string>
     <string name="state">状态</string>
@@ -25,4 +26,16 @@
     <string name="intro_author">作者简介</string>
     <string name="intro_book">图书简介</string>
     <string name="about_project">本项目源于图书馆借书时排队情况而开发，整合了超星馆藏及豆瓣图书api(获取封面/图书信息等) ：p\n\nPride</string>
+
+    <string name="ans">
+        Q:本程序有什么用?\n
+        A:就如其名，馆藏，查询校图书馆馆藏分布情况，以及图书是否被借阅。\n\n
+        Q:图书封面、评分、详情来自哪里?\n
+        A:豆瓣图书api。\n\n
+        Q:轮播图展示的是什么?\n
+        A:热门图书，搜索人次较高图书。\n\n
+        Q:为什么图书封面加载不出来?\n
+        A:  1.豆瓣图书找不到这本书。\n
+            2.同一ip地址快速请求被误以为是恶意流量。
+    </string>
 </resources>

@@ -16,11 +16,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import libsearcher.mepride.android.librarysearcher.R;
 import libsearcher.mepride.android.librarysearcher.model.Book;
+import libsearcher.mepride.android.librarysearcher.model.UrlModel;
 import libsearcher.mepride.android.librarysearcher.view.activity.DetailActivity;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder>{
 
-    private static String HREF = " http://211.86.140.145:8080";
     private Context mContext;
     private List<Book> mBooksList;
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -48,7 +48,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
             public void onClick(View v) {
                 final Book books = mBooksList.get(holder.getAdapterPosition());
                 Intent intent = new Intent(mContext, DetailActivity.class);
-                intent.putExtra("href",HREF + books.getHref());
+                intent.putExtra("href", UrlModel.ChaoXing + books.getHref());
                 mContext.startActivity(intent);
             }
         });

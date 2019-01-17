@@ -41,6 +41,7 @@
 
         <activity android:name=".view.activity.DetailActivity"/>
 
+        <activity android:name=".view.activity.QuestionActivity"/>
     </application>
 
 </manifest>

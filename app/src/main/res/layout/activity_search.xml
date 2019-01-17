@@ -27,16 +27,15 @@
                 android:textColor="#a4a4a4"
                 android:textSize="@dimen/font_size_28px"
                 android:layout_marginVertical="@dimen/space_20"
+                android:imeOptions="actionSearch"
                 android:singleLine="true"/>
 
-
-            <Button
-                android:id="@+id/btn_search1"
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="搜索图书"
-                android:layout_marginRight="@dimen/space_20"/>
+                android:entries="@array/types"
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 
@@ -46,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:visibility="gone"
+            android:indeterminateTint="@color/gray"
             style="?android:attr/progressBarStyleSmall" />
 
         <android.support.v7.widget.RecyclerView

@@ -36,9 +36,6 @@ public class ShelfFragment extends MyLazyFragment
 
     BookGridAdapter bookGridAdapter;
 
-
-    int gridPosition = -1; // 选中项的position
-
     public static ShelfFragment newInstance(){
         return new ShelfFragment();
     }
@@ -120,24 +117,4 @@ public class ShelfFragment extends MyLazyFragment
         dialog.show();
         return true;
     }
-    //    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        menu.add(1, 1, 1, "删除选中");
-//        menu.add(1, 2, 1, "删除全部");
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//    }
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//        Log.i("HB", "onContextItemSelected:adapter.getCount(): " + bookGridAdapter.getCount());
-//        Log.i("HB", "onContextItemSelected:gridPosition: " + gridPosition);
-//        if (item.getItemId() == 1 && gridPosition != -1) {
-//
-//        } else if (item.getItemId() == 2) {
-//            // 删除全部
-//
-//        } else {
-//            return super.onContextItemSelected(item);
-//        }
-//        return true;
-//    }
 }

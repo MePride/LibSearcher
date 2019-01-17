@@ -42,13 +42,6 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_state,parent,false);
         final ViewHolder holder = new ViewHolder(view);
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Situation situation = mSituationList.get(holder.getAdapterPosition());
-//
-//            }
-//        });
         return holder;
     }
 

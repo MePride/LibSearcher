@@ -5,7 +5,6 @@ import android.support.design.widget.AppBarLayout;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,7 +13,9 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -22,6 +23,7 @@ import butterknife.BindView;
 import libsearcher.mepride.android.librarysearcher.R;
 import libsearcher.mepride.android.librarysearcher.common.MyLazyFragment;
 import libsearcher.mepride.android.librarysearcher.helper.DoubanHelper;
+import libsearcher.mepride.android.librarysearcher.model.UrlModel;
 import libsearcher.mepride.android.librarysearcher.view.activity.DetailActivity;
 import libsearcher.mepride.android.librarysearcher.view.activity.SearchActivity;
 import libsearcher.mepride.android.librarysearcher.view.adapter.WebBannerAdapter;
@@ -37,8 +39,8 @@ public class SearchFragment extends MyLazyFragment
 
     @BindView(R.id.progressBar_hot)
     ProgressBar progressBar;
-    @BindView(R.id.abl_test_bar)
-    AppBarLayout mAppBarLayout;
+//    @BindView(R.id.abl_test_bar)
+//    AppBarLayout mAppBarLayout;
     @BindView(R.id.tv_test_address)
     TextView mAddressView;
     @BindView(R.id.tv_test_search)
@@ -108,7 +110,7 @@ public class SearchFragment extends MyLazyFragment
             public void run() {
                 try{
                     Request request = new Request.Builder()
-                            .url("http://211.86.140.145:8080/sms/opac/news/showNewsList.action?type=3&xc=5&pageSize=10")
+                            .url(UrlModel.Hot)
                             .build();
                     Call call = okHttpClient.newCall(request);
                     call.enqueue(new Callback() {
@@ -125,16 +127,16 @@ public class SearchFragment extends MyLazyFragment
                             for (Element element:hots){
                                 hrefs.add(URL + element.attr("href"));
                             }
-                            for (int i=0; i<hrefs.size();i++){
-                                images.add(DoubanHelper.getImages(hrefs.get(i)));
-                            }
-                            images.remove(0);
+                            Map map = new HashMap();
+                            map=DoubanHelper.getImages(hrefs);
+                            images = (List<String>) map.get("images");
+                            hrefs = (List<String>) map.get("hrefs");
                             new Thread(){
                                 @Override
                                 public void run() {
                                     try {
                                         //你的处理逻辑,这里简单睡眠一秒
-                                        sleep(1500);
+                                        sleep(2000);
                                         getActivity().runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {

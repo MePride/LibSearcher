@@ -35,9 +35,9 @@ public abstract class MyActivity extends UIActivity
      */
     protected void initOrientation() {
         // 当前 Activity 不能是透明的并且没有指定屏幕方向，默认设置为竖屏
-        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+//        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        }
     }
 
     /**
@@ -111,20 +111,5 @@ public abstract class MyActivity extends UIActivity
         if (mButterKnife != null) {
             mButterKnife.unbind();
         }
-    }
-
-    /**
-     * 显示吐司
-     */
-    public void toast(CharSequence s) {
-//        ToastUtils.show(s);
-    }
-
-    public void toast(int id) {
-//        ToastUtils.show(id);
-    }
-
-    public void toast(Object object) {
-//        ToastUtils.show(object);
     }
 }

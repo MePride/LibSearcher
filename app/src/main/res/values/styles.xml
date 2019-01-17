@@ -24,21 +24,6 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <!-- 默认圆角按钮样式 -->
-    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:paddingLeft">@dimen/space_30</item>
-        <item name="android:paddingRight">@dimen/space_30</item>
-        <item name="android:textSize">@dimen/font_size_30px</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/selector_button</item>
-        <item name="android:foreground">@null</item>
-    </style>
-
-    <!-- 不带圆角按钮样式 -->
-    <style name="RectButtonStyle" parent="ButtonStyle">
-        <item name="android:background">@drawable/selector_button_rect</item>
-    </style>
 
     <!-- 默认文本框样式 -->
     <style name="EditTextStyle">

@@ -106,7 +106,7 @@ public class MainActivity extends MyActivity implements
                 }
             }, 300);
         } else {
-            toast(getResources().getString(R.string.home_exit_hint));
+
         }
     }
 

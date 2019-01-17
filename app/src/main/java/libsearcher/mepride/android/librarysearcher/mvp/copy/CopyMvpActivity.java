@@ -52,12 +52,12 @@ public class CopyMvpActivity extends MvpActivity<CopyPresenter> implements CopyC
 
     @Override
     public void loginError(String msg) {
-        toast(msg);
+
     }
 
     @Override
     public void loginSuccess(List<String> data) {
-        toast("登录成功了");
+
     }
 
     @Override
